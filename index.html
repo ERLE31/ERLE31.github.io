@@ -1,24 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Глушкова Анна, ИС31</title>
-    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #444;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 300;
+            font-size: 2.2em;
+        }
+        .date {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .photo {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .photo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .works {
+            margin-top: 30px;
+        }
+        .works a {
+            display: block;
+            color: #555;
+            text-decoration: none;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            transition: all 0.2s ease;
+        }
+        .works a:hover {
+            color: #2c3e50;
+            background-color: #f0f0f0;
+            padding-left: 10px;
+        }
+    </style>
 </head>
 <body>
- 
-    <h1>Глушкова Анна, ИС31</h1>
-    Сегодня 17.09.2025 я создала свою первую веб-страницу <br>
-    <p style="text-align: center;" </p>
+    <div class="container">
+        <h1>Глушкова Анна, ИС31</h1>
+        <p class="date">Сегодня 17.09.2025 я создала свою первую веб-страницу</p>
 
-    <img src="фото.jpg"/><br>
-    <a href="1.html">Работа 1</a><br>
-    <a href="1.html">Работа 2</a><br>
-    <a href="1.html">Работа 3</a><br>
-    <a href="1.html">Работа 4</a><br>
-    <a href="1.html">Работа 5</a><br>
-    <a href="1.html">Работа 6</a><br>
+        <div class="photo">
+            <img src="фото.jpg" alt="Моё фото">
+        </div>
 
+        <div class="works">
+            <a href="1.html">Работа 1</a>
+            <a href="1.html">Работа 2</a>
+            <a href="1.html">Работа 3</a>
+            <a href="1.html">Работа 4</a>
+            <a href="1.html">Работа 5</a>
+            <a href="1.html">Работа 6</a>
+        </div>
+    </div>
 </body>
 </html>
