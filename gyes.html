@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число (JavaScript)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        .input-group {
+            margin: 1.5rem 0;
+        }
+        input {
+            padding: 0.8rem;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        #message {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .win {
+            color: #27ae60;
+        }
+        .lose {
+            color: #e74c3c;
+        }
+        .hint {
+            color: #7f8c8d;
+        }
+        .attempts {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="game">
+        <h1>Угадай число</h1>
+        <p>Я загадал число от 1 до 100. Попробуй угадать!</p>
+        <div class="input-group">
+            <input type="number" id="guessInput" min="1" max="100" placeholder="Введи число">
+        </div>
+        <button id="guessButton">Проверить</button>
+        <p id="message"></p>
+        <p class="attempts">Попыток: <span id="attempts">0</span></p>
+    </div>
+
+    <script>
+        // Загадываем случайное число от 1 до 100
+        const secretNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        // Получаем элементы DOM
+        const guessInput = document.getElementById('guessInput');
+        const guessButton = document.getElementById('guessButton');
+        const message = document.getElementById('message');
+        const attemptsDisplay = document.getElementById('attempts');
+
+        // Обработчик нажатия на кнопку
+        guessButton.addEventListener('click', checkGuess);
+
+        // Обработчик нажатия Enter в поле ввода
+        guessInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkGuess();
+            }
+        });
+
+        // Функция проверки числа
+        function checkGuess() {
+            const userGuess = parseInt(guessInput.value);
+            attempts++;
+            attemptsDisplay.textContent = attempts;
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                message.textContent = 'Пожалуйста, введи число от 1 до 100!';
+                message.className = 'lose';
+                return;
+            }
+
+            if (userGuess === secretNumber) {
+                message.textContent = `Поздравляю! Ты угадал число ${secretNumber} с ${attempts} попытки!`;
+                message.className = 'win';
+                guessButton.disabled = true;
+                guessInput.disabled = true;
+            } else if (userGuess < secretNumber) {
+                message.textContent = 'Моё число больше!';
+                message.className = 'hint';
+            } else {
+                message.textContent = 'Моё число меньше!';
+                message.className = 'hint';
+            }
+
+            guessInput.value = '';
+            guessInput.focus();
+        }
+    </script>
+</body>
+</html>
